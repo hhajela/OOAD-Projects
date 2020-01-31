@@ -8,6 +8,6 @@ Team Members:
 We have used Java 8 and eclipse IDE for the project.
 
 The output file format
-Chloe(Name) the Cat(Type)
+Chloe(Name) the Cat(Type)  
 Chloe sleeps(Response to Zookeeper)
 
