@@ -64,7 +64,7 @@ public class Zookeeper {
 		System.out.println("WAKING UP THE ANIMALS");
 		for(int i=0;i<al.size();i++)
 		{
-			al.get(i).wakeup();
+			al.get(i).wakeUp();
 		}
 		
 	}

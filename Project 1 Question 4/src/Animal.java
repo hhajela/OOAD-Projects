@@ -37,7 +37,7 @@ public class Animal
 	/**
 	 * Method to wake up the animal
 	 */
-	public void wakeup()
+	public void wakeUp()
 	{
 		System.out.println(this.name+" the "+this.getClass().getName() );
 		System.out.println(this.name+" woke up");
