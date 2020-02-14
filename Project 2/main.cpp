@@ -10,11 +10,13 @@ The code is in Animal class files and Eat class files
 
 
 #include "Zookeeper.h"
+#include "ZooAnnouncer.h"
 int main() {
 /**
 	 * The Vector of animals name to create the zoo
 	 */
 vector<string> ani;
+
 ani.push_back("Chloe");
 ani.push_back("Chris");
 ani.push_back("Dirk");
@@ -37,6 +39,7 @@ ani.push_back("Tim");
 	 * Initialize the zoo Object and add animals
 	 */
 Zookeeper zoo(ani);
+ZooAnnouncer announcer(&zoo);
 /**
 	 * To execute the tasks.
 	 */

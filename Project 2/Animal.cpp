@@ -25,16 +25,6 @@ void Animal::StartEat()
 eat_->Eat(name_,type_);
 }
 
-void Animal:: Roam()
-{
-  return;
-}
-
-void Animal::MakeNoise()
-{
-return;
-}
-
 void Animal::SetEat(AbstractEat *e)
 {
   eat_=e;

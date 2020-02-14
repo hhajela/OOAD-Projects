@@ -2,14 +2,43 @@
 #define _ZOOKEEPER_H_
 
 #include<vector>
+#include <algorithm>
 #include "Animal.h"
 using namespace std;
 
-class Zookeeper
+enum ZooTasks
 {
-  protected:
-  // Arraylist to contain all the animal object
+  FEED=0,
+  ROLL_CALL,
+  EXERCISE,
+  WAKE_UP,
+  SHUT_DOWN
+};
+
+class Observer;
+
+class Subject
+{
+  public:
+
+  virtual void RegisterObserver(Observer * o);
+
+  virtual void NotifyObservers();
+
+  virtual void RemoveObserver(Observer * o);
+
+  private:
+
+  vector<Observer *> observers_;
+
+};
+
+class Zookeeper : public Subject
+{
+  private:
   vector<Animal*> animal_list_;
+  ZooTasks current_task_;
+
   public:
   /*
   Constructor to initiate class member and create all the animal object based on first character
@@ -41,6 +70,8 @@ class Zookeeper
 	 * function to execute the tasks
 	 */
   void CarryOutTask();
+  void SetCurrentTask(ZooTasks task);
+  ZooTasks GetCurrentTask();
         
 };
 

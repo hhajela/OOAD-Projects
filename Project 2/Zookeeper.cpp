@@ -2,9 +2,31 @@
 using namespace std;
 
 #include "Zookeeper.h"
+#include "ZooAnnouncer.h"
 #include "Feline.h"
 #include "Canine.h"
 #include "Pachyderm.h"
+
+//register observer with subject
+void Subject::RegisterObserver(Observer * o)
+{
+  observers_.push_back(o);
+}
+
+//update the observers
+void Subject::NotifyObservers()
+{
+  for(auto o : observers_)
+  {
+    o->Update();
+  }
+}
+
+//remove observer
+void Subject::RemoveObserver(Observer * o)
+{
+  observers_.erase(std::remove(observers_.begin(), observers_.end(),o), observers_.end());
+}
 
 Zookeeper::Zookeeper(vector<string> animals)
 {
@@ -24,7 +46,7 @@ Zookeeper::Zookeeper(vector<string> animals)
                 break;
         case 'L':animal_list_.push_back(new Lion(animals[i]));
                 break;
-        case 'H':animal_list_.push_back(new Cat(animals[i]));
+        case 'H':animal_list_.push_back(new Hippo(animals[i]));
                 break;
         case 'R':animal_list_.push_back(new Rhino(animals[i]));
                 break;
@@ -84,22 +106,40 @@ void Zookeeper::Exercise()
   }
 }
 
+//change current task and notify observers
+void Zookeeper::SetCurrentTask(ZooTasks task)
+{
+  current_task_ = task;
+  NotifyObservers();
+}
+
+//observers can use this to get current task
+ZooTasks Zookeeper::GetCurrentTask()
+{
+  return current_task_;
+}
+
 void Zookeeper::CarryOutTask()
 {
-  
+    //before doing any task zookeeper notifies the announcer using the observer pattern
+    
+    SetCurrentTask(ZooTasks::WAKE_UP);
     WakeUp();
     cout<<endl;
 
+    SetCurrentTask(ZooTasks::ROLL_CALL);
     RollCall();
     cout<<endl;
 
+    SetCurrentTask(ZooTasks::FEED);
     Feed();
     cout<<endl;
 
+    SetCurrentTask(ZooTasks::EXERCISE);
     Exercise();
     cout<<endl;
+
+    SetCurrentTask(ZooTasks::SHUT_DOWN);
     ShutDown();
     cout<<endl;
-
-  
 }

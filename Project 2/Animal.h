@@ -38,11 +38,11 @@ class Animal
     /**
 	 * Function which tell animal to Roam around
 	 */
-    virtual void Roam();
+    virtual void Roam() =0;
     /**
 	 * Function to get the animal make noise
 	 */
-    virtual void MakeNoise();
+    virtual void MakeNoise() =0;
     
 
     /*
