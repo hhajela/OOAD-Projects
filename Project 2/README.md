@@ -8,6 +8,6 @@ Team Members
 To run the program install clang 7 version.
 
 Use this command to run the program:
-clang++-7 -pthread -o main Animal.cpp Canine.cpp Eat.cppFeline.cpp Pachyderm.cpp ZooAnnouncer.cpp Zookeeper.cpp main.cpp
+clang++-7 -pthread -o main Animal.cpp Canine.cpp Eat.cpp Feline.cpp Pachyderm.cpp ZooAnnouncer.cpp Zookeeper.cpp main.cpp
 
 
