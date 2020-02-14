@@ -43,7 +43,7 @@ class Animal
 	 * Function to get the animal make noise
 	 */
     virtual void MakeNoise();
-    /
+    
 
     /*
     Setter for EatBehaviour
